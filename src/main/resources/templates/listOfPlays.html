@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}"/>
+    <script type="text/javascript" th:src="@{/scripts/script.js}"></script>
+</head>
+<body>
+<!--- <p th:text="'All theatres:' + ${allTheatres}" />
+<form th:method="post">
+    <input type="text" name="theatreName" placeholder="Название театра">
+    <button type="submit">Find!</button>
+</form>
+
+--->
+<form th:method="post">
+    <!---<input type="range" id="ageString" name="ageString"
+           min="0" max="18" step="6">
+    <label for="ageString">Возраст ОТ</label> --->
+    <input type="text" name="ageString" placeholder="Возраст ОТ">
+    <br>
+    <input type="text" name="genre" placeholder="Жанр">
+    <br>
+    <button type="submit">Найти спектакли!</button>
+</form>
+
+<br>
+<h1>Plays:</h1>
+<table class="list-of-theatres">
+    <tr th:each="play : ${plays}">
+        <!---<td><span th:text="${theatre.id}"> Id</span></td> --->
+        <td><a th:href="@{|/play/${play.id}|}"><span th:text="${play.name}"> Name </span></a></td>
+        <td><span th:text="${play.description}"> Description </span></td>
+    </tr>
+</table>
+<button th:onclick="goBack()">Go back to main!</button>
+</body>
+</html>
